@@ -1,29 +1,29 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-using namespace std;
-vector<int> twoSum(vector<int>& nums, int target) {
-    unordered_map<int, bool> dict;
-    for (int i = 0; i < nums.size(); i++) {
-        dict[nums[i]] = true;
-        if (dict[target - nums[i]]) {
-            vector<int> res;
-            res.push_back(nums[i]);
-            res.push_back(target-nums[i]);
-            return res;
+vector<int> twoSum(vector<int> &nums, int target)
+{
+    unordered_map<int, int> dict;
+    vector<int> res;
+    dict[nums[0]] = -1;
+    for (int i = 1; i < nums.size(); i++)
+    {
+        dict[nums[i]] = i;
+    }
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (dict[target - nums[i]] != 0)
+        {
+
+            int val;
+            if (dict[target - nums[i]] == -1)
+                val = 0;
+            else
+                val = dict[target - nums[i]];
+            if (val != i)
+            {
+                res.push_back(i);
+                res.push_back(val);
+                return res;
+            }
         }
     }
-}
-int main() {
-    vector<int> nums1;
-    vector<int> nums2;
-    nums1.push_back(1);
-    nums2.push_back(2);
-    nums2.push_back(3);
-    nums1.push_back(0);
-    nums1.push_back(0);
-    merge(nums1, 1, nums2, 2);
-    for (int i = 0; i < 3; i++) {
-        cout << nums1[i];
-    }
+    return res;
 }
