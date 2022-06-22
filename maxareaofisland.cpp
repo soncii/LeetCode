@@ -13,7 +13,6 @@
                 if (grid[i][j]==1) {
                     int area=0;
                     calc(grid,i,j,area);
-                    //cout<<area<<endl;
                     if (area>maxarea) maxarea=area;
                 }
             }
